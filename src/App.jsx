@@ -410,13 +410,13 @@ function HeroCarousel({ onNavigateShop, setCurrentPage }) {
   const currentSlide = slides[activeSlideIndex]
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-6">
+    <div className="featured-stage max-w-7xl mx-auto px-4 py-6">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
         {/* Left Side Featured Poster */}
         <div className="hidden lg:block lg:col-span-3">
           <div 
             onClick={handleNavigate}
-            className="relative h-full min-h-[340px] rounded-2xl overflow-hidden border border-slate-800/80 shadow-2xl group cursor-pointer"
+            className="featured-poster relative h-full min-h-[340px] rounded-2xl overflow-hidden border border-slate-800/80 shadow-2xl group cursor-pointer"
           >
             <img 
               src="/covers/god-of-war-ragnarok-ps5-disc-sealed.jpg" 
@@ -432,16 +432,16 @@ function HeroCarousel({ onNavigateShop, setCurrentPage }) {
         </div>
 
         {/* Center Auto & Manual Carousel Banner */}
-        <div className="lg:col-span-6 relative rounded-2xl overflow-hidden border border-slate-800/80 shadow-2xl min-h-[340px] flex flex-col justify-between bg-[#121829]">
+        <div className="featured-main-panel lg:col-span-6 relative rounded-2xl overflow-hidden border border-slate-800/80 shadow-2xl min-h-[340px] flex flex-col justify-between bg-[#121829]">
           {/* Current Slide Display */}
-          <div className="relative w-full h-full min-h-[340px]">
+          <div className="featured-slide relative w-full h-full min-h-[340px]">
             <img 
               key={currentSlide.id}
               src={currentSlide.image} 
               alt={currentSlide.title} 
               className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700" 
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-transparent p-8 flex flex-col justify-center max-w-md">
+            <div className="featured-slide-copy absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-transparent p-8 flex flex-col justify-center max-w-md">
               <span className="text-cyan-400 text-xs font-black tracking-widest uppercase mb-1">{currentSlide.badge}</span>
               <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight uppercase mb-2">{currentSlide.title}</h2>
               <p className="text-slate-300 text-xs sm:text-sm font-medium mb-4 leading-relaxed">{currentSlide.subtitle}</p>
@@ -494,7 +494,7 @@ function HeroCarousel({ onNavigateShop, setCurrentPage }) {
         <div className="hidden lg:block lg:col-span-3">
           <div 
             onClick={handleNavigate}
-            className="relative h-full min-h-[340px] rounded-2xl overflow-hidden border border-slate-800/80 shadow-2xl group cursor-pointer"
+            className="featured-poster relative h-full min-h-[340px] rounded-2xl overflow-hidden border border-slate-800/80 shadow-2xl group cursor-pointer"
           >
             <img 
               src="/covers/gta-v-premium-edition-ps4-disc-sealed.jpg" 
@@ -732,29 +732,21 @@ function App() {
         </div>
       </div>
 
-      <header className="bg-[#0b0f19]/90 backdrop-blur-md border-b border-cyan-500/20 px-6 py-3.5 flex items-center justify-between gap-4 sticky top-0 z-50">
+      <header className="site-header bg-[#0b0f19]/90 backdrop-blur-md border-b border-cyan-500/20 px-6 py-3.5 flex items-center justify-between gap-4 sticky top-0 z-50">
         <a 
           href="#home" 
           onClick={() => { window.location.hash = 'home'; setCurrentPage('home'); }}
           className="flex items-center gap-3 group transition-transform hover:scale-105"
         >
-          <img 
-            src="/sagarmatha-games-logo.svg" 
-            alt="Sagarmatha Gaming Store" 
-            className="h-10 w-auto object-contain drop-shadow-[0_0_12px_rgba(56,189,248,0.35)]" 
+          <img
+            src="/sagarmatha-logo-horizontal.png"
+            alt="Sagarmatha Games"
+            className="brand-lockup"
           />
-          <div className="flex flex-col">
-            <span className="font-extrabold text-lg tracking-wider text-white group-hover:text-cyan-400 transition-colors uppercase leading-none">
-              Sagarmatha
-            </span>
-            <span className="text-[10px] tracking-[0.25em] text-cyan-400 font-semibold uppercase leading-tight">
-              Gaming Store
-            </span>
-          </div>
         </a>
 
         <nav
-          className="hidden md:flex bg-[#13192b]/80 border border-slate-800 rounded-full px-5 py-2 items-center gap-6 shrink-0"
+          className="site-nav hidden md:flex bg-[#13192b]/80 border border-slate-800 rounded-full px-5 py-2 items-center gap-6 shrink-0"
           aria-label="Main navigation"
         >
           {navItems.map(({ label, page }) => {
@@ -775,7 +767,7 @@ function App() {
           })}
         </nav>
 
-        <div className="relative flex-1 max-w-xl mx-2">
+        <div className="header-search relative flex-1 max-w-xl mx-2">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-cyan-400 pointer-events-none" size={17} />
           <input
             type="search"
@@ -808,7 +800,7 @@ function App() {
           )}
         </div>
 
-        <div className="flex items-center gap-2.5 shrink-0">
+        <div className="header-actions flex items-center gap-2.5 shrink-0">
           <button
             type="button"
             className="w-10 h-10 rounded-xl bg-[#13192b] border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:border-slate-700 cursor-pointer transition-colors"
@@ -996,7 +988,7 @@ function App() {
             <aside className="reach-card">
               <span className="section-eyebrow">REACH US</span>
               <h2>We’re here to help.</h2>
-              <a href="https://wa.me/9779700979030" target="_blank" rel="noreferrer"><MessageCircle size={17} /><span><small>WHATSAPP / PHONE</small>+977 9700979030</span></a>
+              <a href="https://wa.me/9779767377182" target="_blank" rel="noreferrer"><MessageCircle size={17} /><span><small>WHATSAPP / PHONE</small>+977 9767377182</span></a>
               <a href="mailto:support@sagarmathagamingstore.com"><span className="reach-icon">@</span><span><small>SUPPORT EMAIL</small>support@sagarmathagamingstore.com</span></a>
               <div className="operating-hours"><small>OPERATING HOURS (NPT)</small><strong>10:00 AM – 11:00 PM</strong><span>Every day</span></div>
             </aside>
@@ -1040,7 +1032,7 @@ function App() {
             </article>
             <article className="faq-card">
               <h3><HelpCircle size={18} /> What if I need assistance after purchasing?</h3>
-              <p>Our dedicated support team is available 24/7 on WhatsApp (+977 9700979030) and email to help with setup, activation, and troubleshooting.</p>
+              <p>Our dedicated support team is available 24/7 on WhatsApp (+977 9767377182) and email to help with setup, activation, and troubleshooting.</p>
             </article>
           </div>
         </section>
@@ -1064,9 +1056,9 @@ function App() {
             <aside className="reach-card">
               <span className="section-eyebrow">REACH US</span>
               <h2>Direct Support Channels</h2>
-              <a href="https://wa.me/9779700979030" target="_blank" rel="noreferrer">
+              <a href="https://wa.me/9779767377182" target="_blank" rel="noreferrer">
                 <MessageCircle size={17} />
-                <span><small>WHATSAPP / PHONE</small>+977 9700979030</span>
+                <span><small>WHATSAPP / PHONE</small>+977 9767377182</span>
               </a>
               <a href="mailto:support@sagarmathagamingstore.com">
                 <span className="reach-icon">@</span>
@@ -1238,7 +1230,7 @@ function App() {
             {/* Strict CSS Grid Catalog without Masonry Columns */}
             <ErrorBoundary>
               {Array.isArray(filteredProducts) && filteredProducts.length > 0 ? (
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 items-stretch">
+                <div className="product-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 items-stretch">
                   {filteredProducts.map((product, index) => {
                     if (!product || typeof product !== 'object') return null
                     return (
@@ -1305,19 +1297,11 @@ function App() {
               window.scrollTo({ top: 0, behavior: 'smooth' })
             }}
           >
-            <img 
-              src="/sagarmatha-games-logo.svg" 
-              alt="Sagarmatha Gaming Store" 
-              className="h-10 w-auto object-contain drop-shadow-[0_0_12px_rgba(56,189,248,0.35)]" 
+            <img
+              src="/sagarmatha-logo-horizontal.png"
+              alt="Sagarmatha Games"
+              className="brand-lockup"
             />
-            <div className="flex flex-col">
-              <span className="font-extrabold text-lg tracking-wider text-white group-hover:text-cyan-400 transition-colors uppercase leading-none">
-                Sagarmatha
-              </span>
-              <span className="text-[10px] tracking-[0.25em] text-cyan-400 font-semibold uppercase leading-tight">
-                Gaming Store
-              </span>
-            </div>
           </a>
           <p>Nepal’s trusted gaming store for genuine games, top-ups, and digital codes.</p>
           <strong className="footer-label">PAYMENT METHODS</strong>
@@ -1336,16 +1320,16 @@ function App() {
         </div>
         <div className="footer-column">
           <strong>HELP &amp; POLICIES</strong>
-          <a href="tel:+9779700979030">+977 9700979030</a>
+          <a href="tel:+9779767377182">+977 9767377182</a>
           <a href="mailto:support@sagarmathagamingstore.com">support@sagarmathagamingstore.com</a>
           <a href="https://sagarmathagamingstore.com/return-policy">Return &amp; refund policy</a>
-          <a href="https://wa.me/9779700979030" target="_blank" rel="noreferrer">WhatsApp Support</a>
+          <a href="https://wa.me/9779767377182" target="_blank" rel="noreferrer">WhatsApp Support</a>
         </div>
         <small className="footer-copyright">© 2026 Sagarmatha Gaming Store</small>
       </footer>
 
       {/* Floating WhatsApp Contact */}
-      <a className="whatsapp-float" href="https://wa.me/9779700979030" target="_blank" rel="noreferrer" aria-label="Chat with Sagarmatha Gaming Store on WhatsApp">
+      <a className="whatsapp-float" href="https://wa.me/9779767377182" target="_blank" rel="noreferrer" aria-label="Chat with Sagarmatha Gaming Store on WhatsApp">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.2A12.7 12.7 0 0 0 5.1 22.4L3.4 28.6l6.4-1.7A12.8 12.8 0 1 0 16 3.2Zm0 23.2a10.3 10.3 0 0 1-5.2-1.4l-.4-.2-3.8 1 1-3.7-.3-.4a10.2 10.2 0 1 1 8.7 4.7Zm5.6-7.6c-.3-.2-1.7-.9-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.1.2-.3.2-.6.1-1.7-.9-2.8-1.6-3.9-3.5-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.1.2 2.2 3.4 5.4 4.8 2 .9 2.8 1 3.8.8.6-.1 1.7-.7 1.9-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z" /></svg>
       </a>
 

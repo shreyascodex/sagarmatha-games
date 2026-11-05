@@ -167,13 +167,13 @@ export default function TopUpModal({ product, onClose, onConfirmRecharge, onOpen
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div className="topup-overlay fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
       <div 
-        className="relative w-full max-w-2xl bg-[#0c1220] border border-cyan-500/30 rounded-2xl shadow-2xl overflow-hidden text-white my-auto flex flex-col max-h-[92vh]"
+        className="topup-dialog relative w-full max-w-2xl bg-[#0c1220] border border-cyan-500/30 rounded-2xl shadow-2xl overflow-hidden text-white my-auto flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="relative px-6 py-4 border-b border-slate-800 bg-[#0f172a]/90 flex items-center justify-between shrink-0">
+        <div className="topup-header relative px-6 py-4 border-b border-slate-800 bg-[#0f172a]/90 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-12 h-16 rounded-lg overflow-hidden border border-cyan-500/30 shrink-0 bg-slate-900 shadow-md">
               <img 
@@ -218,7 +218,7 @@ export default function TopUpModal({ product, onClose, onConfirmRecharge, onOpen
               Instant Digital Delivery: Voucher/UC will be delivered via Email &amp; In-Game UID within 5-15 mins.
             </p>
 
-            <div className="w-full bg-[#121a2f] border border-slate-800 rounded-xl p-4 text-left mb-6 space-y-2.5 text-xs sm:text-sm">
+            <div className="topup-order-summary w-full bg-[#121a2f] border border-slate-800 rounded-xl p-4 text-left mb-6 space-y-2.5 text-xs sm:text-sm">
               <div className="flex justify-between items-center pb-2 border-b border-slate-800/60">
                 <span className="text-slate-400">Order ID</span>
                 <span className="font-mono font-bold text-cyan-300">{submittedOrder.orderId}</span>
@@ -259,7 +259,7 @@ export default function TopUpModal({ product, onClose, onConfirmRecharge, onOpen
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 py-3 px-4 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 transition-all cursor-pointer border-0"
+                className="topup-primary flex-1 py-3 px-4 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 transition-all cursor-pointer border-0"
               >
                 Done
               </button>
@@ -406,14 +406,14 @@ export default function TopUpModal({ product, onClose, onConfirmRecharge, onOpen
                       key={pkg.id}
                       type="button"
                       onClick={() => setSelectedPack(pkg)}
-                      className={`relative p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between min-h-[76px] ${
+                      className={`topup-pack-option relative p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between min-h-[76px] ${
                         isSelected
                           ? 'border-cyan-400 bg-cyan-950/40 shadow-lg shadow-cyan-500/20 ring-1 ring-cyan-400/50'
                           : 'border-slate-800 bg-[#12192b]/70 hover:border-slate-700 hover:bg-[#151d33]'
                       }`}
                     >
                       {pkg.badge && (
-                        <span className={`absolute top-1.5 right-1.5 text-[9px] font-black uppercase px-1.5 py-0.2 rounded tracking-wider ${
+                        <span                         className={`topup-pack-badge absolute top-1.5 right-1.5 text-[9px] font-black uppercase px-1.5 py-0.2 rounded tracking-wider ${
                           isSelected ? 'bg-cyan-400 text-slate-950' : 'bg-slate-800 text-cyan-300'
                         }`}>
                           {pkg.badge}
@@ -451,7 +451,7 @@ export default function TopUpModal({ product, onClose, onConfirmRecharge, onOpen
                       key={method.id}
                       type="button"
                       onClick={() => setPaymentMethod(method.id)}
-                      className={`p-3 rounded-xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center gap-1 ${
+                      className={`topup-payment-option ${isSelected ? 'selected' : ''} p-3 rounded-xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center gap-1 ${
                         isSelected
                           ? 'border-cyan-400 bg-cyan-950/40 shadow-md shadow-cyan-500/20'
                           : 'border-slate-800 bg-[#12192b]/70 hover:border-slate-700'
@@ -467,7 +467,7 @@ export default function TopUpModal({ product, onClose, onConfirmRecharge, onOpen
 
             {/* Step 4: Summary & Confirm Button */}
             <div className="pt-2 border-t border-slate-800/80">
-              <div className="bg-[#121a2d] border border-cyan-500/20 rounded-xl p-3 sm:p-4 mb-4 flex items-center justify-between">
+              <div className="topup-summary bg-[#121a2d] border border-cyan-500/20 rounded-xl p-3 sm:p-4 mb-4 flex items-center justify-between">
                 <div>
                   <span className="text-[11px] text-slate-400 block">Total Amount</span>
                   <span className="text-xl sm:text-2xl font-black text-cyan-400">
@@ -485,7 +485,7 @@ export default function TopUpModal({ product, onClose, onConfirmRecharge, onOpen
               <button
                 type="submit"
                 disabled={!playerUid.trim()}
-                className="w-full py-3.5 px-6 rounded-xl bg-cyan-400 hover:bg-cyan-300 disabled:opacity-50 disabled:cursor-not-allowed text-slate-950 font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 transition-all cursor-pointer border-0"
+                className="topup-primary w-full py-3.5 px-6 rounded-xl bg-cyan-400 hover:bg-cyan-300 disabled:opacity-50 disabled:cursor-not-allowed text-slate-950 font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 transition-all cursor-pointer border-0"
               >
                 <Zap size={18} className="fill-slate-950" />
                 Confirm &amp; Recharge

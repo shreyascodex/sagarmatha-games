@@ -104,13 +104,13 @@ export default function GiftCardModal({ product, onClose, onAddToCart, onDirectC
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div className="gift-card-overlay fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
       <div 
-        className="relative w-full max-w-xl bg-[#0c1220] border border-cyan-500/30 rounded-2xl shadow-2xl overflow-hidden text-white my-auto flex flex-col max-h-[92vh]"
+        className="gift-card-dialog relative w-full max-w-xl bg-[#0c1220] border border-cyan-500/30 rounded-2xl shadow-2xl overflow-hidden text-white my-auto flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="relative px-6 py-4 border-b border-slate-800 bg-[#0f172a]/90 flex items-center justify-between shrink-0">
+        <div className="gift-card-header relative px-6 py-4 border-b border-slate-800 bg-[#0f172a]/90 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-12 h-16 rounded-lg overflow-hidden border border-cyan-500/30 shrink-0 bg-slate-900 shadow-md">
               <img 
@@ -162,14 +162,14 @@ export default function GiftCardModal({ product, onClose, onAddToCart, onDirectC
                     key={pkg.id}
                     type="button"
                     onClick={() => setSelectedDenom(pkg)}
-                    className={`relative p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between min-h-[78px] ${
+                    className={`gift-denomination-option relative p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between min-h-[78px] ${
                       isSelected
                         ? 'border-cyan-400 bg-cyan-950/40 shadow-lg shadow-cyan-500/20 ring-1 ring-cyan-400/50'
                         : 'border-slate-800 bg-[#12192b]/70 hover:border-slate-700 hover:bg-[#151d33]'
                     }`}
                   >
                     {pkg.badge && (
-                      <span className={`absolute top-1.5 right-1.5 text-[9px] font-black uppercase px-1.5 py-0.2 rounded tracking-wider ${
+                      <span className={`gift-denomination-badge absolute top-1.5 right-1.5 text-[9px] font-black uppercase px-1.5 py-0.2 rounded tracking-wider ${
                         isSelected ? 'bg-cyan-400 text-slate-950' : 'bg-slate-800 text-cyan-300'
                       }`}>
                         {pkg.badge}
@@ -211,7 +211,7 @@ export default function GiftCardModal({ product, onClose, onAddToCart, onDirectC
           </div>
 
           {/* Step 3: Quantity */}
-          <div className="flex items-center justify-between bg-[#121a2d] border border-slate-800 rounded-xl px-4 py-3">
+          <div className="gift-card-quantity flex items-center justify-between bg-[#121a2d] border border-slate-800 rounded-xl px-4 py-3">
             <span className="text-xs sm:text-sm font-bold text-slate-300">Quantity</span>
             <div className="flex items-center gap-3">
               <button
@@ -234,7 +234,7 @@ export default function GiftCardModal({ product, onClose, onAddToCart, onDirectC
 
           {/* Pricing Summary & Buttons */}
           <div className="pt-2 border-t border-slate-800/80 space-y-3">
-            <div className="flex items-center justify-between bg-[#101728] border border-cyan-500/20 rounded-xl p-3 sm:p-4">
+            <div className="gift-card-summary flex items-center justify-between bg-[#101728] border border-cyan-500/20 rounded-xl p-3 sm:p-4">
               <div>
                 <span className="text-[11px] text-slate-400 block">Total Amount</span>
                 <span className="text-xl sm:text-2xl font-black text-cyan-400">
@@ -261,7 +261,7 @@ export default function GiftCardModal({ product, onClose, onAddToCart, onDirectC
               <button
                 type="button"
                 onClick={handleBuyNow}
-                className="flex-1 py-3 px-4 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 transition-all cursor-pointer border-0"
+                className="gift-card-primary flex-1 py-3 px-4 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 transition-all cursor-pointer border-0"
               >
                 <Zap size={16} className="fill-slate-950" />
                 Instant Checkout

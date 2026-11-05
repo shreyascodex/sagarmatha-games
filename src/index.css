@@ -4,8 +4,8 @@
 
 :root {
 	font-family: 'DM Sans', 'Segoe UI', sans-serif;
-	color: #f2f5fc;
-	background: #07090e;
+	color: #17191c;
+	background: #f7f6f2;
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -27,7 +27,7 @@ body {
 	min-width: 320px;
 	min-height: 100vh;
 	margin: 0;
-	background: #07090e;
+	background: #f7f6f2;
 }
 
 button,
@@ -38,11 +38,11 @@ textarea {
 
 button:focus-visible,
 a:focus-visible {
-	outline: 2px solid #00e5ff;
+	outline: 2px solid #ec5d35;
 	outline-offset: 3px;
 }
 
 ::selection {
-	color: #050a0f;
-	background: #00e5ff;
+	color: #ffffff;
+	background: #ec5d35;
 }

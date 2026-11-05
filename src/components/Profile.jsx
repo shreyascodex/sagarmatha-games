@@ -228,7 +228,7 @@ export default function Profile({ onClose, onOpenTopUp, onNavigateShop }) {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 text-white">
+    <div className="profile-portal max-w-6xl mx-auto px-4 py-8 text-white">
       {/* Top Navigation */}
       <div className="flex items-center justify-between mb-6">
         <button
@@ -251,7 +251,7 @@ export default function Profile({ onClose, onOpenTopUp, onNavigateShop }) {
       </div>
 
       {/* User Overview Card */}
-      <div className="relative rounded-2xl bg-[#0e1526] border border-slate-800 p-6 sm:p-8 mb-8 overflow-hidden shadow-2xl">
+      <div className="profile-overview relative rounded-2xl bg-[#0e1526] border border-slate-800 p-6 sm:p-8 mb-8 overflow-hidden shadow-2xl">
         <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -295,7 +295,7 @@ export default function Profile({ onClose, onOpenTopUp, onNavigateShop }) {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-slate-800 mb-6 gap-2 sm:gap-4">
+      <div className="profile-tabs flex border-b border-slate-800 mb-6 gap-2 sm:gap-4">
         <button
           type="button"
           onClick={() => setActiveTab('orders')}
@@ -348,7 +348,7 @@ export default function Profile({ onClose, onOpenTopUp, onNavigateShop }) {
             orders.map((order, idx) => (
               <div
                 key={order.orderId || idx}
-                className="bg-[#0e1629] border border-slate-800/80 hover:border-slate-700/90 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all shadow-md"
+                className="profile-order-card bg-[#0e1629] border border-slate-800/80 hover:border-slate-700/90 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all shadow-md"
               >
                 <div className="flex items-start sm:items-center gap-4">
                   <div className="w-14 h-18 sm:w-16 sm:h-22 rounded-xl overflow-hidden border border-slate-800 bg-slate-900 shrink-0 shadow-md">
@@ -372,7 +372,7 @@ export default function Profile({ onClose, onOpenTopUp, onNavigateShop }) {
 
                     {/* Voucher Code Box */}
                     {order.redeemCode && (
-                      <div className="mt-2 flex items-center gap-2 bg-[#090d18] border border-cyan-500/40 rounded-xl px-3 py-1.5 w-fit">
+                      <div className="profile-voucher mt-2 flex items-center gap-2 bg-[#090d18] border border-cyan-500/40 rounded-xl px-3 py-1.5 w-fit">
                         <KeyRound size={14} className="text-cyan-400" />
                         <span className="text-xs text-slate-400">Code:</span>
                         <span className="font-mono font-black text-sm text-cyan-300 tracking-wider select-all">{order.redeemCode}</span>
@@ -431,7 +431,7 @@ export default function Profile({ onClose, onOpenTopUp, onNavigateShop }) {
 
           {/* Add New Form */}
           {showAddForm && (
-            <form onSubmit={handleAddSavedId} className="bg-[#10172b] border border-cyan-500/30 rounded-2xl p-5 space-y-4">
+            <form onSubmit={handleAddSavedId} className="profile-id-form bg-[#10172b] border border-cyan-500/30 rounded-2xl p-5 space-y-4">
               <h3 className="font-bold text-white text-sm flex items-center gap-2">
                 <Sparkles size={16} className="text-cyan-400" />
                 Add Player Account ID
@@ -501,7 +501,7 @@ export default function Profile({ onClose, onOpenTopUp, onNavigateShop }) {
             {savedIds.map((item) => (
               <div
                 key={item.id}
-                className="bg-[#0e1629] border border-slate-800 hover:border-slate-700 rounded-2xl p-5 flex flex-col justify-between transition-all"
+                className="profile-saved-card bg-[#0e1629] border border-slate-800 hover:border-slate-700 rounded-2xl p-5 flex flex-col justify-between transition-all"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
